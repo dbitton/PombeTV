@@ -1,0 +1,21 @@
+#!/usr/local/bin/perl -t
+
+use strict;
+use warnings;
+use SangerPaths qw(spombe);
+use pombetv::pombetv_module;
+
+#########
+# Author:        fs
+# Group:         team 79
+# Maintainer:    fs
+#
+# Prints the citation of the paper
+#
+#
+#
+
+print "Content-type: text/html\n\n";
+show_citation(0);
+show_citation_links;
+1;

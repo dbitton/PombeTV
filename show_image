@@ -1,0 +1,35 @@
+#!/usr/local/bin/perl -T
+
+#########
+# Author:        fs3
+# Group:         team79
+#
+# shows an image from the database
+# requires a html-tag like <img src="show_image?id=100&c=m2_affy">
+#########
+
+use strict;
+use warnings;
+use CGI;
+
+use lib qw(/var/www/lib/S_pombe);
+
+use pombetv::pombetv_module;
+
+main();
+0;
+
+sub main {
+    my $cgi = CGI->new();
+    my $id          = $cgi->param('id')||return;
+    my $column_name = $cgi->param('c') || return;
+
+    my $dbh=&connect_database;
+    my $image = fetch_image($dbh,$id, $column_name);
+    disconnect_database($dbh);  
+
+    if (!defined($image) || $image eq "NULL") {
+      $image=get_error_image("no_profile");
+    }
+    display_image($image);
+}

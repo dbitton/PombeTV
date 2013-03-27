@@ -1,0 +1,58 @@
+#!/usr/local/bin/perl -t
+
+use strict;
+use warnings;
+
+use SangerPaths qw(core spombe);
+use SangerPaths qw(core);
+use SangerWeb;
+
+#use lib "/nfs/WWWdev/SANGER_docs/lib/PostGenomics/S_pombe/";
+
+use pombetv::pombetv_module;
+
+
+#########
+# Author:        fs3
+# Group:         team 79
+#
+# Shows helpfile for transcriptome viewer (pombetv)
+#
+
+
+our $VERSION = do { my @r = (q$Revision: 0.1 $ =~ /\d+/mxg); sprintf '%d.'.'%03d' x $#r, @r };
+
+main();
+1;
+
+sub main {
+
+  my $sw  = SangerWeb->new({
+    'title'   => q(Pombe TV),
+    'banner'  => q(TranscriptomeViewer Help),
+    'inifile' => SangerWeb->document_root() . q(/Info/header.ini),
+    'inifile' => q(header.ini),
+  });
+
+  print $sw->header();
+
+  #########
+  # print page content
+  #
+
+
+
+  print_help();  
+
+
+
+
+
+
+
+  show_citation;
+  show_citation_links;
+  print $sw->footer();
+
+  return(1);
+}

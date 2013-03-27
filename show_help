@@ -1,0 +1,104 @@
+#!/usr/local/bin/perl -T
+
+use strict;
+use warnings;
+
+
+use lib qw(/var/www/lib/core);
+use lib qw(/var/www/lib/S_pombe);
+use SangerWeb;
+
+use pombetv::pombetv_module;
+
+
+#########
+# Author:        fs3
+# Group:         team 79
+#
+# Shows helpfile for transcriptome viewer (pombetv)
+#
+
+
+our $VERSION = do { my @r = (q$Revision: 0.1 $ =~ /\d+/mxg); sprintf '%d.'.'%03d' x $#r, @r };
+
+main();
+1;
+
+sub main {
+
+  my $sw  = SangerWeb->new({
+    'title'   => q(Pombe TV),
+    'banner'  => q(TranscriptomeViewer Help),
+    'inifile' => SangerWeb->document_root() . q(/Info/header.ini),
+    'inifile' => q(/var/www/htdocs/header.ini),
+  });
+
+#  print $sw->header();
+ print qq(Content-type: text/html\n\n);
+
+print qq (<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bahler Lab</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="/css/other.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+<div style="text-align:left; margin-left:70px; margin-bottom:0px; margin-top:0px;"><span style="text-shadow:#FFF; font-family:'Arial Black', Gadget, sans-serif; font-size:32pt; color:#EBF1DE; ">b&auml;hler</span><span style="text-shadow:auto; font-family:'Arial Black', Gadget, sans-serif; font-size:32pt; color:#77933C; ">lab&#13;</span></div>
+  <div style="text-align:left; margin-left:30px; margin-top:0px;"><span style="font-family:'Arial Black', Gadget, sans-serif; font-size:20pt; color:#4F6228; "> Genome Regulation</span></div>
+  <div class="O">
+  <div style="text-align:center; margin-bottom:0; margin-top:-72px; margin-left:120px;margin-right:-20px;"><span style="font-family:Arial, Helvetica, sans-serif; font-size:92pt; color:#D7E4BD; "><strong><em>pombeTV&#13;</em></strong></span></div>
+<div style="text-align:right; margin-bottom:0; margin-top:-80px; margin-left:150px;margin-right:20px;"><span style="font-family:'Arial Black', Helvetica, sans-serif; font-size:36pt; color:white; ">UCL</span></div>
+  <div></div>
+</div>
+
+
+</div>
+<div id="sidebar">
+                <div id="menu">
+                        <ul>
+                                <li ><a href="/index.html" title="">Home</a></li>
+                                <li><a href="/people" title="">People</a></li>
+                                <li><a href="/research.htm" title="">Research</a></li>
+                                <li><a href="/publications" title="">Publications</a></li>
+                                <li class="active first"><a href="/resources" title="">Resources</a></li>
+
+                                <li ><a href="/contact.htm" title="">Contact</a></li>
+                        </ul>
+                </div>
+
+
+        </div> <div id="content">
+
+                <div class="feature bg7">
+        </div>
+
+
+
+		<div class="content" >
+<br />
+);
+
+  #########
+  # print page content
+  #
+
+
+
+  print_help();  
+
+
+
+
+
+
+
+ # show_citation;
+ # show_citation_links;
+print '</div></div>';
+#  print $sw->footer();
+
+  return(1);
+}

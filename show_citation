@@ -1,0 +1,24 @@
+#!/usr/local/bin/perl -T
+
+use strict;
+use warnings;
+
+use lib qw(/var/www/lib/S_pombe);
+use lib qw(/var/www/lib/core);
+
+use pombetv::pombetv_module;
+
+#########
+# Author:        fs
+# Group:         team 79
+# Maintainer:    fs
+#
+# Prints the citation of the paper
+#
+#
+#
+
+print "Content-type: text/html\n\n";
+show_citation(0);
+show_citation_links;
+1;

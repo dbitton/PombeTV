@@ -1,0 +1,29 @@
+#!/usr/local/bin/perl -T
+
+
+#########
+# Author:        fs3
+# Group:         team79
+#
+# shows the main menu
+#########
+
+
+use strict;
+use warnings;
+
+use lib qw(/var/www/lib/S_pombe);
+use lib qw(/var/www/lib/core);
+
+use SangerWeb;
+
+use pombetv::pombetv_module;
+
+main();
+0;
+
+sub main {
+ print "Content-type: text/html\n\n";
+ my $condition=13; # all conditions
+ show_main_form($condition,"");
+}
